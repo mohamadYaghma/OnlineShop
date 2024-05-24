@@ -1,6 +1,7 @@
 import React, { useState , Fragment }  from "react";
 import SingleComment from "./singleComment";
 import CommentForm from "./commentForm";
+import ReplyComment from "./replyComment";
 
 const PostComments = ({post}) => {
     const [commentValue , setCommentValue] = useState("");
@@ -12,6 +13,7 @@ const PostComments = ({post}) => {
                     return(
                         !comment.responseTo && comment.status==2 && <React.Fragment key={comment._id}>
                             <SingleComment comment={comment}/>
+                            <ReplyComment comments={post.comments} parentCpmmentId={comment._id}/>
                         </React.Fragment>
                     )
                 })

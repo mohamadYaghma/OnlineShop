@@ -8,7 +8,7 @@ const SingleComment = ({comment}) => {
     const [commentValue , setCommentValue] = useState("");
 
     return ( 
-        <div className="border rounded-xl border-gray-300  p-4 md-8">
+        <div className="border rounded-xl border-gray-300  p-4 mb-8">
             <div className="flex items-center justify-start">
                 <UserIcon className="w-10 h-10 stroke-gray-400" strokeWidth={1}/>
                 <div className="flex flex-col justify-between mr-4">
