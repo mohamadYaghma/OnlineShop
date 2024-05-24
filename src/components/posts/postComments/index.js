@@ -1,11 +1,12 @@
 import React, { useState , Fragment }  from "react";
 import SingleComment from "./singleComment";
+import CommentForm from "./commentForm";
 
 const PostComments = ({post}) => {
-    const [comment , setComment] = useState("");
+    const [commentValue , setCommentValue] = useState("");
     return ( 
         <div>
-            <h2>نظرات</h2>
+            <h2 className="font-black text-2xl mb-8">نظرات</h2>
             {
                 post.comments.map((comment , index )=>{
                     return(
@@ -16,16 +17,10 @@ const PostComments = ({post}) => {
                 })
             }
             {/* base comments form */}
-            <form className="mt-8">
+            <div className="mt-8">
                 <span className="font-bold md:text-lg">ارسال دیدگاه جدید</span>
-                <textarea value={comment} placeholder="نظرت رو برام بنویس..." onChange={(e)=>setComment(e.target.value)}
-                className="focus:ring-primary p-4 rounded my-4 w-full border-none ring-2 ring-slate-300 shadow-sm focus:outline-none focus:ring-2
-                dark:focus-within:ring-blue-500"
-                > </textarea>
-                <button className="mt-4 mx-auto py-4 w-full sm:w-56 bg-violet-600 rounded-xl text-white px-3 md:text-lg">
-                    ارسال نظر
-                </button>
-            </form>
+                <CommentForm comment={commentValue} setComment={setCommentValue}/>
+            </div>
         </div>
      );
 }
