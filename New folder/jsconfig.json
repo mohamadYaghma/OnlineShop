@@ -4,19 +4,25 @@
     "paths": {
 
       "@/*": ["./src/*"],
-        "@/pages/*": ["src/pages/*"],
-        "@/components/*": ["src/components/*"],
-        "@/container/*": ["src/container/*"],
-        "@/context/*": [
+        "@/src/pages/*": [
+          "src/pages/*"
+        ],
+        "@/src/component/*": [
+          "src/component/*"
+        ],
+        "@/src/container/*": [
+          "src/container/*"
+        ],
+        "@/src/context/*": [
           "src/context/*"
         ],
-        "@/hooks/*": [
+        "@/src/hooks/*": [
           "src/hooks/*"
         ],
-        "@/common/*": [
+        "@/src/common/*": [
           "src/common/*"
         ],
-        "@/utils/*": [
+        "@/src/utils/*": [
           "src/utils/*"
         ],
         "@/style/*": [
