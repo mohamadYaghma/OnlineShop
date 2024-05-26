@@ -33,11 +33,12 @@ const SignUpPage = () => {
     }) ;
 
     return (
-        <div className="flex max-w-200 min-w-200">
+        <div className="flex">
             <form onSubmit={formik.handleSubmit} className="flex flex-col gap-10 p-10">
              
-                    <label className="ml-5">نام</label>
+                    <label className="text-xl">نام</label>
                     <input type="text" 
+                    className="w-400 px-12 py-1 block bg-slate-20 text-gray-500 border border-x-gray-300 rounded-lg"
                         // onChange={formik.handleChange} 
                         // onBlur={formik.handleBlur}
                         // value={formik.values.name} 
@@ -48,8 +49,9 @@ const SignUpPage = () => {
                     }
                
                 
-                    <label className="ml-5">ایمیل</label>
+                    <label className="text-xl">ایمیل</label>
                     <input type="email"
+                    className="w-400 px-12 py-1 block bg-slate-20 text-gray-500 border border-x-gray-300 rounded-lg"
                     {...formik.getFieldProps("email")}
                     name="email"/>
                     {
@@ -57,8 +59,9 @@ const SignUpPage = () => {
                     }
               
                 
-                    <label className="ml-5">تلفن همراه</label>
+                    <label className="text-xl">تلفن همراه</label>
                     <input type="text"
+                    className="w-400 px-12 py-1 block bg-slate-20 text-gray-500 border border-x-gray-300 rounded-lg"
                     {...formik.getFieldProps("phonenumber")}
                     name="phonenumber"/>
                     {
@@ -66,8 +69,9 @@ const SignUpPage = () => {
                     }
                 
                 
-                    <label className="ml-5">رمز عبور</label>
+                    <label className="text-xl">رمز عبور</label>
                     <input type="password"
+                    className="w-400 px-12 py-1 block bg-slate-20 text-gray-500 border border-x-gray-300 rounded-lg"
                     {...formik.getFieldProps("password")}
                     name="password"/>
                     {
@@ -75,8 +79,9 @@ const SignUpPage = () => {
                     }
            
          
-                    <label className="ml-5">تکرار رمز عبور</label>
+                    <label className="text-xl">تکرار رمز عبور</label>
                     <input type="password"
+                    className="w-400 px-12 py-1 block bg-slate-20 text-gray-500 border border-x-gray-300 rounded-lg"
                     {...formik.getFieldProps("passwordConfrim")}
                     name="passwordConfrim"/>
                     {
@@ -85,7 +90,7 @@ const SignUpPage = () => {
             
                 <button 
                 type="submit"
-                className="bg-white text-gray-600 px-5 py-1"
+                className="bg-white text-white px-5 py-1 bg-blue-600 hover:bg-blue-500 hover:text-black"
                 disabled={!formik.isValid}
                 >ارسال</button>
             </form>

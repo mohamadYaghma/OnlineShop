@@ -2,7 +2,7 @@ import SignUpPage from "@/src/components/signUpPage";
 
 const Signup = () => {
     return ( 
-        <div className="">
+        <div className="pt-30 flex justify-center">
             <SignUpPage />
         </div>
      );
