@@ -11,6 +11,8 @@ import { MdContentCopy } from "react-icons/md";
 import PostList from "@/src/components/posts/PostList";
 import PostComments from "@/src/components/posts/postComments";
 import toLocalDate from "../../utils/toLocalDate";
+import MainLayote from "../../MainLayote";
+import Head from "next/head";
 
 
 const PostPage = ({post}) => {
@@ -25,7 +27,11 @@ const PostPage = ({post}) => {
     }
 
     return(
-        <div className="bg-gray-50 min-h-screen">
+        <MainLayote>
+            <Head>
+                <title>جواهری ویرگول -  {post.title}</title>
+            </Head>
+            <div className="pt-5 pb-16 min-h-screen">
             <div className="md:max-w-screen-lg container mx-auto">
             <header className="flex flex-col md:flex-row gap-y-5 md:justify-between md:items-start max-w-screen-md mb-12 mx-auto">
                 {/* author data */}
@@ -139,6 +145,7 @@ const PostPage = ({post}) => {
             <PostComments post={post} />
             </div>
         </div>
+        </MainLayote>
     );
 }
  

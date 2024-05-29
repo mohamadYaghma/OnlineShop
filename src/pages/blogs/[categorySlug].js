@@ -6,11 +6,13 @@ import CategoryMobile from "@/components/posts/CategoryMobile";
 import SortBar from "@/components/posts/SortBar";
 import CategoryDesktop from "@/components/posts/CategoryDesktop";
 import queryString from "query-string";
+import MainLayote from "../MainLayote";
 
 
 export default function CategoryPage({blogsData , postCategory}) {
   return (
-  <div className="bg-gray-50">
+  <MainLayote>
+    <div className="bg-gray-50 pt-5">
      <div className="container mx-auto lg:max-w-screen-xl px-4"> 
      <CategoryMobile postCategory={postCategory} />
      <div className="grid gap-8 md:grid-cols-12 md:grid-rows-[60px_minmax(300px,_1fr)] text-black min-h-screen " >
@@ -30,6 +32,7 @@ export default function CategoryPage({blogsData , postCategory}) {
     </div>
    </div>
   </div>
+  </MainLayote>
   )
 }
 
