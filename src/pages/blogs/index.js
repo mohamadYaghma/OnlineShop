@@ -7,6 +7,7 @@ import SortBar from "@/components/posts/SortBar";
 import CategoryDesktop from "@/components/posts/CategoryDesktop";
 import MainLayote from "../MainLayote";
 import Head from "next/head";
+import http from "@/src/sevices/httpServices";
 
 
 export default function BlogsPage({blogsData , postCategory}) {
@@ -43,9 +44,14 @@ export default function BlogsPage({blogsData , postCategory}) {
 }
 
 
-export async function getServerSideProps(context){
-  const {data : result} = await axios.get("http://localhost:5000/api/posts?limit=6&page=1") ;
-  const {data : postCategory} = await axios.get("http://localhost:5000/api/post-category") ;
+export async function getServerSideProps({req}){
+  const {data : result} = await http.get("/posts?limit=6&page=1" , {
+    withCredentials :true , 
+    headers:{
+      Cookie : req.headers.Cookie || "",
+    }
+  }) ;
+  const {data : postCategory} = await http.get("/post-category") ;
   const {data} = result ;
   return {
     props : {

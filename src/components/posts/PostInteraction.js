@@ -14,9 +14,9 @@ const PostInteraction = ({post , isSmall , className}) => {
                         <button className='bg-red-100 p-0.5 rounded flex items-center gap-x-1 text-red-500 hover:bg-red-500 hover:text-red-100 transition-all '>
                           {
                             post.isLiked ? (
-                            <SolidHeartIcon className={`${iconSize} fill-current`}/>
+                              <SolidHeartIcon className={`${iconSize} fill-current`}/>
                             ):(
-                            <HeartIcon className={`${iconSize} stroke-current`}/>
+                              <HeartIcon className={`${iconSize} stroke-current`}/>
                             )
                           }
                           <span className='block text-xs text-current font-bold leading-3'>{post.likesCount}</span>
@@ -26,9 +26,10 @@ const PostInteraction = ({post , isSmall , className}) => {
                         '>
                           {
                             post.isBookmarked ? (
-                                <SolidBookmarkIcon className={`${iconSize} fill-current`}/>
+                              <SolidBookmarkIcon className={`${iconSize} fill-current`}/>
                               ) : (
-                                <BookmarkIcon className={`${iconSize} stroke-current`} />)
+                                <BookmarkIcon className={`${iconSize} stroke-current`} />
+                               )
                           }
                         </button>
                       </div>

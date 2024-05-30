@@ -13,6 +13,7 @@ import PostComments from "@/src/components/posts/postComments";
 import toLocalDate from "../../utils/toLocalDate";
 import MainLayote from "../../MainLayote";
 import Head from "next/head";
+import http from "@/src/sevices/httpServices";
 
 
 const PostPage = ({post}) => {
@@ -152,8 +153,12 @@ const PostPage = ({post}) => {
 export default PostPage;
 
 export async function getServerSideProps(ctx){
-    const {query} = ctx ;
-    const {data:{data}} =await axios.get(`http://localhost:5000/api/posts/${query.postSlug}`);
+    const {query , req} = ctx ;
+    const {data:{data}} =await http.get(`/posts/${query.postSlug}`,{
+        withCredentials :true , 
+        headers:{
+          Cookie : req.headers.Cookie || "",
+        }});
     console.log(data);
     return {
         props:{

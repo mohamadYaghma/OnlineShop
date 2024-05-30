@@ -7,6 +7,7 @@ import SortBar from "@/components/posts/SortBar";
 import CategoryDesktop from "@/components/posts/CategoryDesktop";
 import queryString from "query-string";
 import MainLayote from "../MainLayote";
+import http from "@/src/sevices/httpServices";
 
 
 export default function CategoryPage({blogsData , postCategory}) {
@@ -38,14 +39,17 @@ export default function CategoryPage({blogsData , postCategory}) {
 
 
 export async function getServerSideProps(context){
-  const {query} = context;  
-console.log(queryString.stringify(query));
 
-  // const {data : result} = await axios.get(`http://localhost:5000/api/posts?limit=6&page=1&categorySlug=${params.categorySlug}`) ;
+  const {query , req} = context;  
+// console.log(queryString.stringify(query));
  
-  const {data : result} = await axios.get(`http://localhost:5000/api/posts?${queryString.stringify(query)}`) ;
+  const {data : result} = await http.get(`/posts?${queryString.stringify(query)}`, {
+    withCredentials :true , 
+    headers:{
+      Cookie : req.headers.Cookie || "",
+    }}) ;
 
-  const {data : postCategory} = await axios.get("http://localhost:5000/api/post-category") ;
+  const {data : postCategory} = await http.get("/post-category") ;
 
   const {data} = result ;
   return {
