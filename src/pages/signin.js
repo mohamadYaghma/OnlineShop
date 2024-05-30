@@ -2,12 +2,12 @@ import Input from "@/src/components/common";
 import { useFormik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
-import MainLayote from "../MainLayote";
+import MainLayote from "./MainLayote";
 import Link from "next/link";
 import Head from "next/head";
-import axios from "axios";
-import toast,{ Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
+import { useAuthAction } from "@/src/context/AuthContext";
+
 
 const initialValues = {
     email:"",
@@ -21,20 +21,14 @@ const validationSchema = Yup.object({
 })
 
 const LogIn = () => {
+    const disatch = useAuthAction();
     const router = useRouter();
+
     const [formValues , setFormValues]=useState(null);
+
     const onSubmit=(values)=>{
         const {email , password } = values ;
-        axios
-        .post('http://localhost:5000/api/user/signin' , values , {withCredentials: true})
-        .then(res => 
-            toast.success( "خوش آمدید" ,
-                router.push('/')
-                )
-            )
-        .catch(err => 
-            toast.error(err?.response?.data?.message , )
-            )
+        disatch({type:"SIGNIN" , payload : values})
     }
     const formik = useFormik({
         initialValues: formValues || initialValues,

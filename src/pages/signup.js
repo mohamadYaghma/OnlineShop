@@ -1,12 +1,15 @@
+
 import { useFormik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
-import Input from "../common";
-import RadioInput from "../common/radioInput";
-import SelectOption from "../common/select";
-import CheckBoxInput from "../common/checkBoxInput";
+import Input from "@/src/components/common";
+
 import MainLayote from "@/src/pages/MainLayote";
 import Head from "next/head";
+import { useAuthAction } from "@/src/context/AuthContext";
+import CheckBoxInput from "@/src/components/common/checkBoxInput";
+import SelectOption from "@/src/components/common/select";
+import RadioInput from "@/src/components/common/radioInput";
 
 
 const checkBoxOption=[
@@ -29,7 +32,7 @@ const selectOption=[
 const initialValues = {
     name:"",
     email:"",
-    phonenumber:"",
+    phoneNumber:"",
     password:"",
     passwordConfrim:"",
     gender:"",
@@ -37,22 +40,22 @@ const initialValues = {
     proficiency:[],
     terms:false,
 }
-const saveData = {
-    name:"mohamad",
-    email:"mohamad@yahoo.com",
-    phonenumber:"09999999999",
-    password:"123",
-    passwordConfrim:"123",
-    gender:"0",
-    nationnality:"",
-    proficiency:"",
-    terms:false,
-}
+// const saveData = {
+//     name:"mohamad",
+//     email:"mohamad@yahoo.com",
+//     phonenumber:"09999999999",
+//     password:"123",
+//     passwordConfrim:"123",
+//     gender:"0",
+//     nationnality:"",
+//     proficiency:"",
+//     terms:false,
+// }
 
 const validationSchema = Yup.object({
     name : Yup.string().required("لطفا نام خود را وارد نمایید ").min(4,"طول نام کمتر از 4 کارکتر نباید باشد"),
     email :Yup.string().email("ایمیل را بدرستی وارد نمایید").required("لطفا ایمیل خود را وارد نمایید"),
-    phonenumber:Yup.string().required("وارد کرد نتلفن همراه اجباری است")
+    phoneNumber:Yup.string().required("وارد کرد نتلفن همراه اجباری است")
     .matches(/^[0-9]{11}$/ , "شماره همراه نا معتبر می باشد").nullable(),
     password:Yup.string().required("لطفا پسورد خود را وارد نمایید")
     ,
@@ -64,12 +67,14 @@ const validationSchema = Yup.object({
     terms:Yup.boolean().required("قوانین سایت اجباری می باشد").oneOf([true],"قوانین سایت اجباری می باشد" )
 });
 
-const SignUpPage = () => {
-    
+const Signup = () => {
+   
     const [formValues , setFormValues]=useState(null);
-    
-    const onSubmit=(value)=>{
-        console.log(value);
+    const dispatch = useAuthAction();
+
+    const onSubmit=(values)=>{
+        const {name , email , password , phoneNumber } =values ;
+        dispatch({type : "SIGNUP" , payload : {name , email , password ,phoneNumber   }});
     }
     const formik = useFormik({
         initialValues: formValues || initialValues,
@@ -100,7 +105,8 @@ const SignUpPage = () => {
                 <Input 
                     formik={formik} 
                     label="تلفن همراه"  
-                    name="phonenumber" 
+                    name="phoneNumber" 
+                    type="tel"
                 />
                 <Input 
                     formik={formik} 
@@ -159,18 +165,22 @@ const SignUpPage = () => {
                     }
                 </div>
 
-
-                <button onClick={()=>{setFormValues(saveData)}}>یادآوری اطلاعات</button>
                 <button 
                     type="submit"
                     disabled={!formik.isValid}
                     className="text-white px-5 py-1 bg-blue-600 hover:bg-blue-500 hover:text-black ">
                                 ارسال
-                    </button>
+                </button>
                 </form>
             </div>
         </MainLayote>
       );
 }
  
-export default SignUpPage;
+
+
+
+
+ 
+export default Signup;
+
