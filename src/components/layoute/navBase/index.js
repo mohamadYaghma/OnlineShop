@@ -2,11 +2,11 @@ import { useAuth, useAuthAction } from '@/src/context/AuthContext'
 import Link from 'next/link'
 
 const NaveBase = () => {
-  const {user} = useAuth();
+  const {user , loading} = useAuth();
   const dispatch = useAuthAction();
     return ( 
-      <header className='shadow-black-100 py-2  bg-white text-sm md:text-xl'>
-        <div className='container mx-auto xl:max-w-screen-xl'> 
+      <header className='shadow-md py-2 bg-white text-sm mb-8 md:text-xl'>
+        <div className={`container mx-auto xl:max-w-screen-xl px-4 md:px-0 transition-all ${loading ? "opacity-0" : "opacity-100"}`}> 
           <nav className='flex justify-between'>
             <ul className='flex justify-center items-center gap-x-5 '>
                 <li className='hover:text-gray-300 '>
@@ -25,7 +25,7 @@ const NaveBase = () => {
                     <li className='hover:text-gray-300 text-sm'>پروفایل - {user.name}</li>
                     <button
                       onClick={()=>dispatch({type:"SIGNOUTE"})}
-                      className='bg-red-600 px-2 py-1 rounded text-red-100 cursor-pointer'
+                      className='bg-red-600 px-1  py-1 rounded text-red-100 cursor-pointer text-sm'
                     >خروج</button>
                   </>
                   :

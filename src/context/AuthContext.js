@@ -8,7 +8,7 @@ const { createContext, useContext, useReducer, useEffect } = require("react");
 const authContext = createContext();
 const authContextDispather = createContext();
 
-const initialstate = {user:null , loading : false , error : null}
+const initialstate = {user:null , loading : true , error : null}
 const reducer = (state , action)=>{
     switch(action.type){
         case "SIGNIN_PENDING" : return{user :null , error:false , loading  : true};
