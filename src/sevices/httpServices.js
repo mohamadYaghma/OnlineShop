@@ -5,8 +5,10 @@ import axios from "axios";
 //      ? "http://localhost:5000/api" 
 //      : "https://api.domain.ie/api";
 
+console.log(process.env.NEXT_PUBLIC_BASE_API_URL);
+
 const app  =axios.create({
-    baseURL : process.env.BASE_API_URL ,
+    baseURL : process.env.NEXT_PUBLIC_BASE_API_URL ,
     withCredentials :true 
 });
 

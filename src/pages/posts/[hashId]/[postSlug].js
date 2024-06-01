@@ -155,7 +155,6 @@ export default PostPage;
 export async function getServerSideProps(ctx){
     const {query , req} = ctx ;
     const {data:{data}} =await http.get(`/posts/${query.postSlug}`,{
-        withCredentials :true , 
         headers:{
           Cookie : req.headers.Cookie || "",
         }});
