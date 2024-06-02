@@ -8,6 +8,7 @@ import CategoryDesktop from "@/components/posts/CategoryDesktop";
 import MainLayote from "../MainLayote";
 import Head from "next/head";
 import http from "@/src/sevices/httpServices";
+import queryString from "query-string";
 
 
 export default function BlogsPage({blogsData , postCategory}) {
@@ -44,8 +45,8 @@ export default function BlogsPage({blogsData , postCategory}) {
 }
 
 
-export async function getServerSideProps({req}){
-  const {data : result} = await http.get("/posts?limit=6&page=1" , {
+export async function getServerSideProps({req , query}){
+  const {data : result} = await http.get(`/posts?${queryString.stringify(query)}`, {
     withCredentials :true , 
     headers:{
       Cookie : req.headers.Cookie || "",

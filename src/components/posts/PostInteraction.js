@@ -2,7 +2,7 @@ import routerPush from '@/src/pages/utils/routerPush';
 import http from '@/src/sevices/httpServices'
 import { BookmarkIcon , HeartIcon , ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline'
 import {  HeartIcon as SolidHearIcon  , BookmarkIcon as SolidBookmarkIcon} from '@heroicons/react/24/solid'
-import { data } from 'autoprefixer';
+
 
 
 import { useRouter } from 'next/router';

@@ -34,7 +34,7 @@ const PostList = ({blogsData}) => {
                       {/* category */}
                      <Link href={`/blogs/${blog.category.englishTitle}` }>
                         <a>
-                           <span className="text-xs px-2 py-1 rounded-xl bg-blue-100 text-blue-600 hover:text-blue-100 hover:bg-blue-600 transition-all duration-300 cursor-pointer">{blog.category.title}
+                           <span className="text-xs px-2 py-1 rounded-xl bg-blue-100 text-blue-600 hover:text-blue-100 hover:bg-blue-600 transition-all duration-300 cursor-pointer">{blog.category.englishTitle}
                         </span>
                         </a>
                      </Link>
