@@ -1,9 +1,12 @@
+import routerPush from '@/src/pages/utils/routerPush';
 import http from '@/src/sevices/httpServices'
 import { BookmarkIcon , HeartIcon , ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline'
 import {  HeartIcon as SolidHearIcon  , BookmarkIcon as SolidBookmarkIcon} from '@heroicons/react/24/solid'
+import { data } from 'autoprefixer';
 
 
 import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 const PostInteraction = ({post , isSmall , className}) => {
     const iconSize = isSmall ? "h-4 w-4 " : "h-6 w-6" ;
@@ -12,18 +15,24 @@ const PostInteraction = ({post , isSmall , className}) => {
     
     const likehandler=(postId)=>{
       http.put(`/posts/like/${postId}`)
-      .then((res)=>{
-          router.push(router);
+      .then(({data})=>{
+          routerPush(router);
+          toast.success(data.message)
        })
-      .catch()
+      .catch((err)=>{
+        toast.error(err?.response?.data.message)
+      })
     }
 
     const bookmarkhandler=(postId)=>{
       http.put(`/posts/bookmark/${postId}`)
-      .then((res)=>{
-          router.push(router);
+      .then(({data})=>{
+        routerPush(router);
+        toast.success(data.message)
        })
-      .catch()
+      .catch((err)=>{
+        toast.error(err?.response?.data.message)
+      })
     }
 
     return (

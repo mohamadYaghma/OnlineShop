@@ -9,7 +9,7 @@ console.log(process.env.NEXT_PUBLIC_BASE_API_URL);
 
 const app  =axios.create({
     baseURL : process.env.NEXT_PUBLIC_BASE_API_URL ,
-    withCredentials :true 
+    withCredentials :true ,
 });
 
 const http   = {
