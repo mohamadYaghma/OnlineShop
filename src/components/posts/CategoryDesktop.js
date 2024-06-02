@@ -8,7 +8,7 @@ const CategoryDesktop = ({postCategory}) => {
     const {query} = useRouter();
 
     return ( 
-        <div className="bg-white rounded-3xl overflow-hidden">
+        <div className="bg-white rounded-3xl overflow-hidden sticky top-24">
           {/* accrdion headr */}
           <div className="flex item-center justify-between px-4 py-4 cursor-pointer bg-purple-400"
           
