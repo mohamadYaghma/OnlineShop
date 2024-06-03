@@ -9,17 +9,12 @@ import MainLayote from "../MainLayote";
 import Head from "next/head";
 import http from "@/src/sevices/httpServices";
 import queryString from "query-string";
-import Pagination from '@mui/material/Pagination';
-import { useRouter } from "next/router";
-import routerPush from "../utils/routerPush";
+
+import PaginationComponents from "@/src/components/common/pagination";
 
 
 export default function BlogsPage({blogsData , postCategory}) {
-  const router = useRouter();
-  const pageHandler=(event , page) =>{
-    router.query.page = page ;
-    routerPush(router)
-  }
+ 
   return (
   <MainLayote>
     <Head>
@@ -42,9 +37,7 @@ export default function BlogsPage({blogsData , postCategory}) {
       {/* blogs section */}
       <div className="md:col-span-9 grid grid-cols-6 gap-8">
         <PostList blogsData={blogsData.docs} />
-        <div className="col-span-6 flex justify-center" dir="ltr">
-          <Pagination count={blogsData.totalPages} page={blogsData.page} color="primary" onChange={pageHandler}/>
-        </div>
+        <PaginationComponents page={blogsData.page} totalPages={blogsData.totalPages}/>
       </div>
       </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState , Fragment }  from "react";
 import SingleComment from "./singleComment";
 
-const ReplyComment = ({comments , parentCpmmentId}) => {
+const ReplyComment = ({comments , parentCpmmentId , postId}) => {
     return ( 
         
             comments.map((comment) =>{
@@ -9,8 +9,8 @@ const ReplyComment = ({comments , parentCpmmentId}) => {
                     parentCpmmentId == comment.responseTo && (
                         <div className="mr-5">   
                             <React.Fragment key={comment._id}>
-                                <SingleComment comment={comment}/>
-                                <ReplyComment comments={comments} parentCpmmentId={comment._id}/>
+                                <SingleComment comment={comment} postId={postId}/>
+                                <ReplyComment comments={comments} parentCpmmentId={comment._id} postId={postId}/>
                             </React.Fragment>
                         </div>
                     )

@@ -8,6 +8,7 @@ import CategoryDesktop from "@/components/posts/CategoryDesktop";
 import queryString from "query-string";
 import MainLayote from "../MainLayote";
 import http from "@/src/sevices/httpServices";
+import PaginationComponents from "@/src/components/common/pagination";
 
 
 export default function CategoryPage({blogsData , postCategory}) {
@@ -29,6 +30,8 @@ export default function CategoryPage({blogsData , postCategory}) {
       {/* blogs section */}
       <div className="md:col-span-9 grid grid-cols-6 gap-8">
         <PostList blogsData={blogsData.docs} />
+        <PaginationComponents page={blogsData.page} totalPages={blogsData.totalPages}/>
+
       </div>
     </div>
    </div>

@@ -3,9 +3,9 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import CommentForm from "./commentForm";
 
-const SingleComment = ({comment}) => {
+const SingleComment = ({comment , postId}) => {
     const[OnReply , setOnReply] = useState(false);
-    const [commentValue , setCommentValue] = useState("");
+
 
     return ( 
         <div className="border rounded-xl border-gray-300  p-4 mb-8">
@@ -30,7 +30,7 @@ const SingleComment = ({comment}) => {
                 OnReply && (
                     <div className="mt-4">
                         <span className="text-gray-500 text-sm">درحال پاسخ به {comment.writer?.name}</span>
-                       <CommentForm comment={commentValue} setComment={setCommentValue}/>
+                       <CommentForm postId={postId} responseTo={comment._id} setOnReply={setOnReply}/>
                     </div>
                 )
             }
