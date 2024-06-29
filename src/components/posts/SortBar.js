@@ -1,7 +1,8 @@
 import routerPush from '@/src/pages/utils/routerPush';
-import { AdjustmentsHorizontalIcon} from '@heroicons/react/24/outline'
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+// import { AdjustmentsHorizontalIcon} from '@heroicons/react/outline'
+import { AdjustmentsIcon } from "@heroicons/react/outline";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 const sortOptions=[
   {label:" پر بازدیدترین " , id:"most"},
@@ -22,7 +23,7 @@ const SortBar = () => {
     return ( 
         <div className="bg-white rounded-3xl px-4 flex items-center">
           <div className="flex gap-x-2 items-center ml-4">
-            <AdjustmentsHorizontalIcon className="h-6 w-6"/> 
+            <AdjustmentsIcon className="h-6 w-6"/> 
             <span className="text-gray-700"> مرتب سازی :</span>
             
           </div>

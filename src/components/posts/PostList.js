@@ -1,6 +1,7 @@
-import { BookmarkIcon , HeartIcon , ChatBubbleBottomCenterTextIcon , ClockIcon} from '@heroicons/react/24/outline'
+import { ClockIcon } from "@heroicons/react/outline";
 import Link from "next/link"
 import PostInteraction from './PostInteraction';
+import Image from "next/image";
 
 const PostList = ({blogsData}) => {
     return ( blogsData.map((blog , index)=>{
@@ -8,10 +9,11 @@ const PostList = ({blogsData}) => {
               return(
                 <div key={index} className="col-span-6 md:col-span-3 lg:col-span-2 bg-white  rounded-3xl  flex flex-col p-2 max-h-[330px]"> 
                   {/* cover image */}
-                  <div className="aspect-w-16 aspect-h-9  mb-6">
+                  <div className="aspect-w-16 aspect-h-9 mb-6">
                     <Link href={`/posts/${blog.hashId}/${blog.slug}`} >
                       <a>
-                      <img src={blog.coverImage } className="w-full h-full object-center object-cover rounded-2xl" />
+                      {/* <img src={blog.coverImage } className="w-full h-full object-center object-cover rounded-2xl" /> */}
+                      <Image layout="responsive" src={blog.coverImage } width={500} height={300} className=" object-center object-cover rounded-2xl"/>
                       </a>
                     </Link>
                   </div>

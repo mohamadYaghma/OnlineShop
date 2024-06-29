@@ -1,6 +1,6 @@
 // 'use client'
 import "@/styles/Home.module.css"
-import  axios  from "axios";
+
 import PostList from "@/components/posts/PostList";
 import CategoryMobile from "@/components/posts/CategoryMobile";
 import SortBar from "@/components/posts/SortBar";

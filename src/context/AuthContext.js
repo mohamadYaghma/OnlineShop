@@ -2,6 +2,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useReducerAsync } from 'use-reducer-async';
 import Router from "next/router";
+import http from "../sevices/httpServices";
 
 const { createContext, useContext, useReducer, useEffect } = require("react");
 
@@ -23,10 +24,10 @@ const asyncActionHandlers ={
             ({dispatch}) =>
                 (action)=>{ 
                     dispatch({type: "SIGNIN_PENDING"})
-                     axios
-                    .post('http://localhost:5000/api/user/signin' , action.payload , {withCredentials: true})
+                     http
+                    .post('user/signin' , action.payload , {withCredentials: true})
                     .then(({data}) => {
-                        toast.success( "خوش آمدید" );
+                        toast.success( `${data.name} خوش آمدی` );
                         dispatch({type: "SIGNIN_SUCCESS" , payload : data});
                         Router.push("/");
                                     }               
@@ -41,8 +42,8 @@ const asyncActionHandlers ={
             ({dispatch}) =>
             (action)=>{ 
                 dispatch({type: "SIGNUP_PENDING"})
-                axios
-                .post('http://localhost:5000/api/user/signup' , action.payload , {withCredentials: true})
+                http
+                .post('/user/signup' , action.payload , {withCredentials: true})
                 .then(({data}) => {
                     toast.success( "خوش آمدید" );
                     dispatch({type: "SIGNIN_SUCCESS" , payload : data});
@@ -58,21 +59,21 @@ const asyncActionHandlers ={
             ({dispatch}) =>
                 (action)=>{ 
                     dispatch({type: "SIGNUP_PENDING"})
-                    axios
-                    .get('http://localhost:5000/api/user/load' , {withCredentials: true})
+                    http
+                    .get('/user/load' , {withCredentials: true})
                     .then(({data}) => {
                         dispatch({type: "SIGNIN_SUCCESS" , payload : data});
                         })
                     .catch(err => {
                         dispatch({type: "SIGNIN_REJECT" , error : err?.response?.data?.message});
-                    }
-            )},
+                    })
+                },
         SIGNOUTE:
         ({dispatch}) =>
             (action)=>{ 
                 dispatch({type: "SIGNUP_PENDING"})
-                axios
-                .get('http://localhost:5000/api/user/logout'  , {withCredentials: true})
+                http
+                .get('/user/logout'  , {withCredentials: true})
                 .then(({data}) => {
                     window.location.href="/";
                     })

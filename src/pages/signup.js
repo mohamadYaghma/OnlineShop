@@ -1,15 +1,17 @@
 
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import Input from "@/src/components/common";
-
-import MainLayote from "@/src/pages/MainLayote";
 import Head from "next/head";
+import { useSelector } from "react-redux";
 import { useAuthAction } from "@/src/context/AuthContext";
+
+import Input from "@/src/components/common";
+import MainLayote from "@/src/pages/MainLayote";
 import CheckBoxInput from "@/src/components/common/checkBoxInput";
 import SelectOption from "@/src/components/common/select";
 import RadioInput from "@/src/components/common/radioInput";
+import { userSignup } from "../redux/user/userAction";
 
 
 const checkBoxOption=[
@@ -69,12 +71,18 @@ const validationSchema = Yup.object({
 
 const Signup = () => {
    
-    const [formValues , setFormValues]=useState(null);
+    const userInfo = useSelector((state)=> state.userSignup)
+    const {user} = userInfo ;
     const dispatch = useAuthAction();
+    const [formValues , setFormValues]=useState(null);
+
+    useEffect(()=>{
+        if(user) routerPush.push("/");
+    }, [user]);
 
     const onSubmit=(values)=>{
         const {name , email , password , phoneNumber } =values ;
-        dispatch({type : "SIGNUP" , payload : {name , email , password ,phoneNumber   }});
+        dispatch(userSignup({name , email , password ,phoneNumber   }));
     }
     const formik = useFormik({
         initialValues: formValues || initialValues,

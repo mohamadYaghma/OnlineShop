@@ -1,12 +1,14 @@
 import Input from "@/src/components/common";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import MainLayote from "./MainLayote";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useAuthAction } from "@/src/context/AuthContext";
+import { useAuth, useAuthAction } from "@/src/context/AuthContext";
+import { useDispatch, useSelector } from "react-redux";
+import { userSignin } from "../redux/user/userAction";
 
 
 const initialValues = {
@@ -21,15 +23,17 @@ const validationSchema = Yup.object({
 })
 
 const LogIn = () => {
-    const disatch = useAuthAction();
     const router = useRouter();
-
+    const disatch = useDispatch();
+    const userInfo = useSelector((state)=> state.userSignin);
+    const { user } = userInfo;
     const [formValues , setFormValues]=useState(null);
-
+    // OnSubmit
     const onSubmit=(values)=>{
-        const {email , password } = values ;
-        disatch({type:"SIGNIN" , payload : values})
+        
+        disatch(userSignin(values))
     }
+
     const formik = useFormik({
         initialValues: formValues || initialValues,
         onSubmit,
@@ -37,7 +41,10 @@ const LogIn = () => {
         validateOnMount:true,
         enableReinitialize:true,
     }) 
-
+    useEffect(()=>{
+        if(user) router.push("/");
+    }, [user]);
+    
     return ( 
         <MainLayote>
             <Head>

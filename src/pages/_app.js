@@ -1,16 +1,26 @@
 import "../../styles/globals.css"
 import { Toaster } from "react-hot-toast"
-import AuthProvier from "../context/AuthContext"
 import { wrapper } from "../redux/store"
+import { useEffect } from "react"
+import { loadUserData } from "../redux/user/userAction"
+import { useStore } from "react-redux"
+// import AuthProvier from "../context/AuthContext"
 
-function MyApp({ Component, pageProps }) {
+function tala({ Component, pageProps }) {
+  
+  const store = useStore() ;
+
+  useEffect( ()=>{
+    loadUserData(store);
+  },[] )
+  
     return (
-      <AuthProvier>
+      <>
         <Component {...pageProps} />
         <Toaster />
-      </AuthProvier>
+      </>
     )
   }
 
 
-  export default wrapper.withRedux(MyApp);
+  export default wrapper.withRedux(tala);
