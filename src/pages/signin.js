@@ -71,7 +71,7 @@ const LogIn = () => {
                         >
                     ارسال       
                     </button>
-                    <Link href={"/signUp"} >
+                    <Link href={"/signup"} >
                         <p className="mt-4 py-4 cursor-pointer">هنوز ثبت نام نکردی ؟</p>
                     </Link>
                 </form>
