@@ -9,7 +9,7 @@ import { useState } from "react";
 import { MdContentCopy } from "react-icons/md";
 import PostList from "@/src/components/posts/PostList";
 import PostComments from "@/src/components/posts/postComments";
-import toLocalDate from "../../utils/toLocalDate";
+import toLocalDate from "../../../utils/toLocalDate";
 import MainLayote from "../../MainLayote";
 import Head from "next/head";
 import http from "@/src/sevices/httpServices";

@@ -1,4 +1,4 @@
-import routerPush from '@/src/pages/utils/routerPush';
+import routerPush from '@/src/utils/routerPush';
 // import { AdjustmentsHorizontalIcon} from '@heroicons/react/outline'
 import { AdjustmentsIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";

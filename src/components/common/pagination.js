@@ -1,4 +1,4 @@
-import routerPush from '@/src/pages/utils/routerPush';
+import routerPush from '@/src/utils/routerPush';
 import Pagination from '@mui/material/Pagination';
 import { useRouter } from "next/router";
 

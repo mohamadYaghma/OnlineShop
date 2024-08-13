@@ -1,4 +1,4 @@
-import routerPush from "@/src/pages/utils/routerPush";
+import routerPush from "@/src/utils/routerPush";
 import http from "@/src/sevices/httpServices";
 import { useRouter } from "next/router";
 import { useState } from "react";

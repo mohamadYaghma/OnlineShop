@@ -1,4 +1,4 @@
-import toLocalDate from "@/src/pages/utils/toLocalDate";
+import toLocalDate from "@/src/utils/toLocalDate";
 import { UserIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import CommentForm from "./commentForm";

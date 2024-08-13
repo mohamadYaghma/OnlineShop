@@ -9,7 +9,7 @@ const NaveBase = () => {
   const dispatch = useDispatch();
 
     return ( 
-      <header className='shadow-md py-2 bg-white text-sm md:text-xl sticky top-0 z-40'>
+      <header className='shadow-md py-2 bg-white text-sm md:text-xl sticky top-0 z-40 text-black'>
         <div className={`container mx-auto xl:max-w-screen-xl px-4 md:px-0 transition-all ${loading ? "opacity-0" : "opacity-100"}`}> 
           <nav className='flex justify-between'>
             <ul className='flex justify-center items-center gap-x-5 '>
